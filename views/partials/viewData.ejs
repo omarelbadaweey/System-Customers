@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>قائمة المستخدمين</title>
+    <link rel="stylesheet" href="input.css" />
+    <link rel="stylesheet" href="output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50 flex">
+    <main class="flex-1 overflow-x-hidden overflow-y-auto">
+      <div class="p-8 ml-[18%] bg-gray-100">
+       
+        <% if (Data.length === 0) { %>
+        <div
+          class="flex flex-col items-center justify-center bg-gray-100 text-center p-6"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/4076/4076500.png"
+            alt="Customer Not Found"
+            class="w-40 h-40 mb-6 opacity-80"
+          />
+          <h2 class="text-2xl font-semibold text-gray-800 mb-2">
+            Customer Not Found
+          </h2>
+          <p class="text-gray-500 text-sm max-w-md">
+            We couldn't find any customer matching your search. Please try again
+            or add a new one.
+          </p>
+          <a
+            href="/add"
+            class="mt-6 px-5 py-2 bg-blue-400 hover:bg-blue-500 text-white rounded-lg shadow-md transition"
+          >
+            add Customer
+          </a>
+        </div>
+        <% } else{ %>
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">
+            All Customers
+          </h2>
+
+          <div class="overflow-x-auto">
+            <table
+              class="w-full border border-gray-300 rounded-lg border-collapse"
+            >
+              <thead class="bg-blue-400 text-white">
+                <tr>
+                  <th class="border border-gray-300 px-4 py-3">#</th>
+                  <th class="border border-gray-300 px-4 py-3">Name</th>
+                  <th class="border border-gray-300 px-4 py-3">Email</th>
+                  <th class="border border-gray-300 px-4 py-3">Mobile</th>
+                  <th class="border border-gray-300 px-4 py-3">Age</th>
+                  <th class="border border-gray-300 px-4 py-3">Gender</th>
+                  <th class="border border-gray-300 px-4 py-3">Country</th>
+                  <th class="border border-gray-300 px-4 py-3 text-center">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="bg-gray-50">
+                <!-- صف 1 -->
+
+                <% Data.forEach((item , index) => { %>
+                <tr class="hover:bg-gray-100 transition">
+                  <td
+                    class="border border-gray-300 px-4 py-3 font-semibold text-gray-700"
+                  >
+                    <%= index+1 %>
+                  </td>
+                  <td
+                    class="border capitalize font-semibold border-gray-300 px-4 py-3"
+                  >
+                    <%= item.firstname %> <%= item.lastname %>
+                  </td>
+                  <td class="border border-gray-300 px-4 py-3 text-blue-600">
+                    <%= item.email %>
+                  </td>
+                  <td class="border border-gray-300 px-4 py-3">
+                    <%= item.mobileNumber %>
+                  </td>
+                  <td class="border border-gray-300 px-4 py-3">
+                    <%= item.age %>
+                  </td>
+                  <td class="border border-gray-300 px-4 py-3 capitalize">
+                    <%= item.gender %>
+                  </td>
+                  <td class="border border-gray-300 px-4 py-3">
+                    <%= item.country %>
+                  </td>
+                  <td class="border border-gray-300 px-4 py-3 text-center">
+                    <div
+                      class="flex items-center justify-center space-x-3 text-lg"
+                    >
+                      <a
+                        href="/user/<%= item._id %>"
+                        class="text-green-500 hover:text-green-600 transition"
+                      >
+                        <i class="fa-solid fa-eye"></i>
+                      </a>
+                      <a
+                        href="/edit/<%= item._id %>"
+                        class="text-yellow-500 hover:text-yellow-600 transition"
+                      >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      </a>
+
+                      <form
+                        action="/delete/<%= item._id %>?_method=DELETE"
+                        method="post"
+                      >
+                        <button
+                          type="submit"
+                          class="cursor-pointer text-red-500 hover:text-red-600 transition"
+                        >
+                          <i class="fa-solid fa-trash"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </main>
+
+    <!-- <script>
+      // إضافة تفاعلية بسيطة للبحث
+      document.getElementById("search").addEventListener("input", function () {
+        const searchTerm = this.value.toLowerCase();
+        const rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      });
+
+      // تفعيل أزرار الحذف
+      document.querySelectorAll(".fa-trash-alt").forEach((button) => {
+        button.addEventListener("click", function () {
+          if (confirm("هل أنت متأكد من حذف هذا المستخدم؟")) {
+            this.closest("tr").remove();
+          }
+        });
+      });
+    </script> -->
+  </body>
+</html>

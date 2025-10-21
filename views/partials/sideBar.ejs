@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>side bar</title>
+    <link rel="stylesheet" href="/input.css" />
+    <link rel="stylesheet" href="/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="flex h-full">
+    <!-- header border -->
+    <div class="text-5xl fixed top-0 zz-20 bg-blue-400 w-full h-5"></div>
+    <!-- search -->
+    <div
+      class="fixed top-5 content-center z-20 w-full bg-white shadow-sm p-4 mb-6"
+    >
+      <form action="/search" method="post"
+        class="relative w-[60%] mx-auto overflow-hidden rounded-lg border border-blue-400"
+      >
+        <button
+        type="submit"
+          class="cursor-pointer absolute inset-y-0 right-0 flex items-center bg-blue-400 p-3"
+        >
+          <i class="fas fa-search text-white"></i>
+        </button>
+        <input
+          name="searchText"
+          type="search"
+          class="w-full bg-gray-50 p-2 text-gray-900 text-md focus:outline-none"
+          placeholder="Search Customer..."
+        />
+      </form>
+    </div>
+    <aside
+      id="sidebar"
+      class="sidebar w-64 fixed z-20 top-24 h-full bg-white shadow-lg"
+    >
+      <!-- Header with logo -->
+      <div class="p-4 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2 gap-3">
+            <div
+              class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center"
+            >
+              <i class="fas fa-cube text-white"></i>
+            </div>
+            <h1 class="text-xl font-bold text-gray-800 nav-text">Dashboard</h1>
+          </div>
+          <button
+            id="toggleSidebar"
+            class="cursor-pointer text-gray-600 hover:text-blue-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-arrow-right transition-transform duration-300"
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- User profile -->
+      <div class="p-3 border-b border-gray-200 flex items-center space-x-3">
+        <img
+          src="/img/admin.jpg"
+          alt="User profile"
+          class="w-12 h-12 rounded-full object-center object-cover icon"
+        />
+        <div class="nav-text">
+          <p class="font-medium text-gray-800">System Customers</p>
+          <p class="text-xs text-gray-500">Administrator</p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="p-4 space-y-4">
+        <a href="/home" class="nav-item flex items-center space-x-3 text-lg p-2 rounded-lg text-blue-500">
+          <i class="fas fa-home w-5 text-center icon"></i>
+          <span class="nav-text">Home</span>
+        </a>
+
+        <a
+          href="/add"
+          class="nav-item flex items-center space-x-3 p-2 text-lg rounded-lg text-blue-500"
+        >
+          <i class="fa-solid fa-user-plus icon"></i>
+          <span class="nav-text">Add</span>
+        </a>
+      </nav>
+
+      <!-- Logout  -->
+      <div class="p-4 border-t border-gray-200  mt-auto">
+        <a
+          href="/"
+          class="flex items-center space-x-3 p-2 text-lg text-red-700 rounded-lg hover:text-amber-50 transition-all  hover:bg-red-700"
+        >
+          <i class="fas fa-sign-out-alt w-5 icon "></i>
+          <span class="nav-text">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <script src="main.js"></script>
+  </body>
+</html>

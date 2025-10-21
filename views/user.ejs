@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details</title>
+    <link rel="icon" href="/img/admin.jpg" />
+    <link rel="stylesheet" href="/input.css" />
+    <link rel="stylesheet" href="/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+<body class="">
+  <section class="bg-gray-100 min-h-screen p-8 pt-24">
+    <!-- بطاقة معلومات المستخدم -->
+    <div
+      class="bg-white shadow-lg rounded-xl p-6 mb-8 border border-gray-200 max-w-3xl mx-auto"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800">
+            👤 <span class="text-blue-600"><%= User.firstname %> <%= User.lastname %></span>
+          </h2>
+          <p class="text-gray-500 mt-1">User ID: <span class="font-semibold text-gray-700">#<%= User._id %></span></p>
+        </div>
+        <div>
+          <a
+            href="/home"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition"
+          >
+            <i class="fa-solid fa-arrow-left mr-2"></i> Back
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- جدول التفاصيل -->
+    <div
+      class="bg-white shadow-md rounded-xl border border-gray-200 max-w-3xl mx-auto overflow-hidden"
+    >
+      <table class="w-full border-collapse">
+        <thead class="bg-blue-500 text-white">
+          <tr>
+            <th class="px-5 py-3 text-left border border-blue-400">Field</th>
+            <th class="px-5 py-3 text-left border border-blue-400">Value</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-50">
+          <tr class="border-b border-gray-200 hover:bg-gray-100 transition">
+            <td class="px-5 py-3 font-semibold text-gray-700 border border-gray-300">Email</td>
+            <td class="px-5 py-3 border border-gray-300 text-gray-600">
+              <%= User.email %>
+            </td>
+          </tr>
+          <tr class="border-b border-gray-200 hover:bg-gray-100 transition">
+            <td class="px-5 py-3 font-semibold text-gray-700 border border-gray-300">Mobile</td>
+            <td class="px-5 py-3 border border-gray-300 text-gray-600">
+              <%= User.mobileNumber %>
+            </td>
+          </tr>
+          <tr class="border-b border-gray-200 hover:bg-gray-100 transition">
+            <td class="px-5 py-3 font-semibold text-gray-700 border border-gray-300">Age</td>
+            <td class="px-5 py-3 border border-gray-300 text-gray-600">
+              <%= User.age %>
+            </td>
+          </tr>
+          <tr class="border-b border-gray-200 hover:bg-gray-100 transition">
+            <td class="px-5 py-3 font-semibold text-gray-700 border border-gray-300">Gender</td>
+            <td class="px-5 py-3 border border-gray-300 text-gray-600 capitalize">
+              <%= User.gender %>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-100 transition">
+            <td class="px-5 py-3 font-semibold text-gray-700 border border-gray-300">Country</td>
+            <td class="px-5 py-3 border border-gray-300 text-gray-600">
+              <%= User.country %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>
+</html>
