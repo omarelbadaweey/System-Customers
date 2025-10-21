@@ -149,6 +149,12 @@
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -165,9 +171,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 // الراوتات
-app.get('/', (req, res) => res.render('login'));
+// app.get('/', (req, res) => res.render('login'));
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   customerSchema.find()
     .then(Data => res.render('index', { Data }))
     .catch(err => console.log(err));
@@ -189,7 +195,7 @@ app.get('/edit/:id', (req, res) => {
 
 app.get('/delete/:id', (req, res) => {
   customerSchema.deleteOne({ _id: req.params.id })
-    .then(() => res.redirect('/home'))
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err));
 });
 
@@ -197,7 +203,7 @@ app.get('/delete/:id', (req, res) => {
 app.post("/", (req, res) => {
   const { userName, password } = req.body;
   if (userName === "admin" && password === "12admin12") {
-    res.redirect("/home");
+    res.redirect("/");
   } else {
     res.redirect("/");
   }
@@ -211,19 +217,19 @@ app.post('/search', (req, res) => {
 
 app.post('/add', (req, res) => {
   customerSchema.create(req.body)
-    .then(() => res.redirect("/home"))
+    .then(() => res.redirect("/"))
     .catch(err => console.log(err));
 });
 
 app.put('/edit/:id', (req, res) => {
   customerSchema.updateOne({ _id: req.params.id }, req.body)
-    .then(() => res.redirect('/home'))
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err));
 });
 
 app.delete('/delete/:id', (req, res) => {
   customerSchema.deleteOne({ _id: req.params.id })
-    .then(() => res.redirect('/home'))
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err));
 });
 
