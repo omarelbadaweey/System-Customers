@@ -16,14 +16,22 @@ var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 
+// mongoose.connect("mongodb+srv://admin:admin-omar@cluster0.hzfd5e1.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0").then(() => {
+//   app.listen(port, () => {
+//     console.log(`http://localhost:${port}`);
+//   });
+// })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 mongoose.connect("mongodb+srv://admin:admin-omar@cluster0.hzfd5e1.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0").then(() => {
-  app.listen(port, () => {
-    console.log(`http://localhost:${port}`);
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`🚀 Server running on port ${port}`);
   });
 })
-  .catch((err) => {
-    console.log(err);
-  });
+.catch((err) => {
+  console.log(err);
+});
 
 
 // EJS as the templating  engine
